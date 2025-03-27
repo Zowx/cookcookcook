@@ -1,0 +1,35 @@
+services:
+    # Service pour le frontend SvelteKit
+    - type: web
+      name: cookcookcook-frontend
+      env: static
+      buildCommand: cd frontend && npm install && npm run build
+      staticPublishPath: ./frontend/.svelte-kit/output
+      envVars:
+          - key: VITE_API_URL
+            value: https://cookcookcook-backend.onrender.com
+      routes:
+          - type: rewrite
+            source: /*
+            destination: /index.html
+
+    # Service pour le backend Deno
+    - type: web
+      name: cookcookcook-backend
+      env: deno
+      buildCommand: cd backend && deno cache server.ts deps.ts start-render.ts
+      startCommand: cd backend && deno run --allow-net --allow-read --allow-env --allow-write start-render.ts
+      envVars:
+          # IMPORTANT: N'oubliez pas de configurer ces variables dans le tableau de bord Render
+          # Pour MONGO_URL, essayez les différentes options mentionnées dans le fichier .env
+          - key: MONGO_URL
+            sync: false
+          - key: DB_NAME
+            value: cook_db
+          - key: JWT_SECRET
+            value: admin
+            # Si votre backend a des problèmes de connexion à MongoDB, vous devrez peut-être
+            # essayer différents formats d'URL dans le tableau de bord Render
+          - key: ALLOWED_ORIGINS
+            value: https://cookcookcook-frontend.onrender.com
+      healthCheckPath: /health

@@ -1,0 +1,84 @@
+# Dépendances
+node_modules/
+/node_modules
+*/node_modules
+*/*/node_modules
+.pnp
+.pnp.js
+
+# Environnement
+.env
+.env.*
+!.env.example
+!.env.exemple
+*.local
+
+# Logs et diagnostics
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+deno.lock.diagnostics
+
+# Répertoires de build et de cache
+/build/
+/dist/
+/.svelte-kit/
+/package/
+.output/
+frontend/build/
+frontend/.svelte-kit/
+.vercel
+.netlify
+.wrangler
+
+# Fichiers Deno
+*/.deno/
+deno.lock.prev
+
+# Fichiers temporaires et OS
+.DS_Store
+Thumbs.db
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+*.swp
+*.swo
+*.tmp
+*.bak
+.npm
+.eslintcache
+.stylelintcache
+
+# Fichiers de debug et tests
+coverage/
+.nyc_output/
+cypress/screenshots/
+cypress/videos/
+
+# IDE et éditeurs
+/.idea/
+/.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+*.iml
+*.ipr
+*.iws
+.settings/
+
+# Fichiers spécifiques au projet
+stats.html
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Fichiers de lock (optionnel, selon votre politique de gestion des dépendances)
+# Décommentez si vous ne voulez pas les versionner
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml 
